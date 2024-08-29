@@ -7,3 +7,6 @@ regolith.look.path: /usr/share/regolith-look/lascaille
 
 ! Set default window gaps
 wm.gaps.inner.size: 1
+
+! Change regolith sleep binding to Super+Shift+d
+wm.binding.sleep: Shift+d
