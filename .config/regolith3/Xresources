@@ -1,0 +1,9 @@
+!regolith.wallpaper.file: /usr/share/desktop-base/futureprototype-theme/wallpaper-withlogo/gnome-background.xml
+!regolith.lockscreen.wallpaper.file: /usr/share/desktop-base/futureprototype-theme/wallpaper-withlogo/gnome-background.xml
+regolith.wallpaper.file: /usr/share/backgrounds/Fuji_san_by_amaral.png
+regolith.lockscreen.wallpaper.file: /usr/share/backgrounds/Fuji_san_by_amaral.png
+!regolith.look.path: /usr/share/regolith-look/ayu-dark
+regolith.look.path: /usr/share/regolith-look/lascaille
+
+! Set default window gaps
+wm.gaps.inner.size: 1

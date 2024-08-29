@@ -61,6 +61,7 @@ echo -e "${BLUE}Installing dotfiles...${NC}"
 dotfiles=(
     ".zshrc"
     ".config/alacritty/alacritty.toml"
+    ".config/regolith3/Xresources"
 )
 
 # Install each dotfile
