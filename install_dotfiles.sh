@@ -3,6 +3,13 @@
 # Set the path of the dotfiles repo to the current working directory
 DOTFILES_DIR="$(pwd)"
 
+# Color codes
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
 # Function to create the symlink for the dotfile within the repo
 create_symlink() {
     local source_file="$1"
@@ -12,25 +19,26 @@ create_symlink() {
     # Create the target directory if it doesn't exist
     if [ ! -d "$target_dir" ]; then
         mkdir -p "$target_dir"
-        echo "Created directory: $target_dir"
+        echo -e "${BLUE}Created directory:${NC} $target_dir"
     fi
 
     # Check if the target file already exists
     if [ -e "$target_file" ]; then
         # If it's already a symlink to our dotfile, skip it
         if [ -L "$target_file" ] && [ "$(readlink "$target_file")" = "$source_file" ]; then
-            echo "Symlink already exists: $target_file"
+            echo -e "${YELLOW}Symlink already exists:${NC} $target_file"
             return
         fi
 
         # Backup the existing file
-        mv "$target_file" "${target_file}.backup.$(date +%Y%m%d%H%M%S)"
-        echo "Backed up existing file: ${target_file}.backup.$(date +%Y%m%d%H%M%S)"
+        local backup_file="${target_file}.backup.$(date +%Y%m%d%H%M%S)"
+        mv "$target_file" "$backup_file"
+        echo -e "${YELLOW}Backed up existing file:${NC} $backup_file"
     fi
 
     # Create the symlink
     ln -s "$source_file" "$target_file"
-    echo "Created symlink: $target_file -> $source_file"
+    echo -e "${GREEN}Created symlink:${NC} $target_file -> $source_file"
 }
 
 # Function to install a specific dotfile
@@ -42,12 +50,12 @@ install_dotfile() {
     if [ -f "$source_file" ]; then
         create_symlink "$source_file" "$target_file"
     else
-        echo "Source file $source_file does not exist. Skipping."
+        echo -e "${RED}Source file $source_file does not exist. Skipping.${NC}"
     fi
 }
 
 # Main installation
-echo "Installing dotfiles..."
+echo -e "${BLUE}Installing dotfiles...${NC}"
 
 # List of dotfiles to install
 dotfiles=(
@@ -60,4 +68,4 @@ for file in "${dotfiles[@]}"; do
     install_dotfile "$file"
 done
 
-echo "Dotfiles installation complete!"
+echo -e "${GREEN}Dotfiles installation complete!${NC}"

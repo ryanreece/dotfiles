@@ -12,13 +12,18 @@ The structure of this repository mirrors the structure of the files in your home
 ## Installation
 
 1. Clone this repository:
-   ```
+   ```bash
    git clone https://github.com/ryanreece/dotfiles.git
    cd dotfiles
    ```
 
-2. Run the installation script:
+2. Make the install script executable:
+   ```bash
+   chmod +x install_dotfiles.sh
    ```
+
+3. Run the installation script:
+   ```bash
    ./install_dotfiles.sh
    ```
 
