@@ -59,6 +59,7 @@ echo -e "${BLUE}Installing dotfiles...${NC}"
 
 # List of dotfiles to install
 dotfiles=(
+    ".tmux.conf"
     ".zshrc"
     ".config/alacritty/alacritty.toml"
     ".config/regolith3/Xresources"
