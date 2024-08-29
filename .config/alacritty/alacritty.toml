@@ -1,0 +1,4 @@
+# Import my selected theme
+import = [
+    "~/.config/alacritty/themes/themes/citylights.toml"
+]
