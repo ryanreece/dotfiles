@@ -1,0 +1,3 @@
+# Launch flameshot using Super+Shift+S
+bindsym $mod+Shift+S exec flameshot gui
+
