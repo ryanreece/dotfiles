@@ -22,6 +22,11 @@ source $ZSH/oh-my-zsh.sh
 # Fix AnyConnect SAML prompt
 export WEBKIT_DISABLE_DMABUF_RENDERER=1
 
+# Source .bash_functions
+if [ -f $HOME/.bash_functions ]; then
+    source $HOME/.bash_functions
+fi
+
 # Make vim command open Neovim
 alias vim="nvim"
 
