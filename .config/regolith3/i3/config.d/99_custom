@@ -4,3 +4,8 @@ bindsym $mod+Shift+S exec flameshot gui
 # Launch the gnome-calculator in floating mode
 for_window [class="gnome-calculator"] floating enable
 
+# Launch the gnome-tweaks in floating mode
+for_window [class="gnome-tweaks"] floating enable
+
+## Launch launcher using Super+u
+bindsym $mod+u exec ulauncher
