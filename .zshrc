@@ -28,7 +28,7 @@ if [ -f $HOME/.bash_functions ]; then
 fi
 
 # Make vim command open Neovim
-alias vim="nvim"
+alias n="nvim"
 
 # Load Node Version Manager [nvm](https://github.com/nvm-sh/nvm)
 export NVM_DIR="$HOME/.nvm"
