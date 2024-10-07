@@ -63,6 +63,7 @@ dotfiles=(
     ".tmux.conf"
     ".zshrc"
     ".config/alacritty/alacritty.toml"
+    ".config/regolith3/autostart.sh"
     ".config/regolith3/Xresources"
     ".config/regolith3/i3/config.d/99_custom"
 )
