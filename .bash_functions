@@ -97,3 +97,35 @@ todo() {
     fi
 }
 
+# Generate a Geekbot post from an input markdown file
+todo_geekbot() {
+  local input_file="$1"
+
+  if [[ ! -f "$input_file" ]]; then
+    echo "❌ File not found: $input_file"
+    return 1
+  fi
+
+  local output_file="${input_file%.md}_geekbot.md"
+
+  awk '
+    BEGIN {
+      todo     = "🔲"
+      doing    = "⚒️"
+      blocked  = "🟨"
+      done     = "✅"
+    }
+    {
+      # Replace list markers with emojis
+      gsub(/- \[ \]/, "- " todo)
+      gsub(/- \[o\]/, "- " doing)
+      gsub(/- \[b\]/, "- " blocked)
+      gsub(/- \[x\]/, "- " done)
+
+      print
+    }
+  ' "$input_file" > "$output_file"
+
+  echo "✅ Geekbot post saved to: $output_file"
+}
+
