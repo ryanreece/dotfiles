@@ -63,11 +63,8 @@ extract() {
 
 # Create todo file
 todo() {
-    # Get the current week number
     local current_week=$(date +%U)
     local existing_file=""
-  
-    # Find the file with the highest week number
     for file in week-*-todo.md; do
         if [[ -f $file ]]; then
             local week_number=$(echo "$file" | grep -oP '(?<=week-)\d+(?=-todo\.md)')
@@ -77,7 +74,6 @@ todo() {
         fi
     done
 
-    # Check if the current week matches the highest existing file
     if [[ -n $existing_file ]]; then
         local highest_week=$(echo "$existing_file" | grep -oP '(?<=week-)\d+(?=-todo\.md)')
         if [[ $current_week -le $highest_week ]]; then
@@ -86,13 +82,17 @@ todo() {
         fi
     fi
 
-    # Create the new file
     local new_file="week-${current_week}-todo.md"
     if [[ -n $existing_file ]]; then
-        cp "$existing_file" "$new_file"
+        # Copy template and modify its contents
+        sed -E \
+            -e "s/(# Week) [0-9]+( To Do:)/\1 ${current_week}\2/" \
+            -e 's/^(- \[x\] )(.*)$/\1~~\2~~/' \
+            "$existing_file" > "$new_file"
         echo "File for week $current_week created using $existing_file as a template: $new_file"
     else
-        touch "$new_file"
+        echo "# Week ${current_week} To Do:" > "$new_file"
+        echo -e "\n## 1. Title\n- [ ] Task goes here" >> "$new_file"
         echo "File for week $current_week created: $new_file"
     fi
 }
@@ -128,4 +128,3 @@ todo_geekbot() {
 
   echo "✅ Geekbot post saved to: $output_file"
 }
-
