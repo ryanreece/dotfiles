@@ -128,3 +128,32 @@ todo_geekbot() {
 
   echo "✅ Geekbot post saved to: $output_file"
 }
+
+tmuxd() {
+  local session="${1:-dev}"
+
+  # Check if the session already exists
+  if tmux has-session -t "$session" 2>/dev/null; then
+    echo "Session '$session' already exists."
+    tmux attach -t "$session"
+    return
+  fi
+
+  # Start a new session with an initial window
+  tmux new -d -s "$session" -n "nvim"
+  tmux send-keys -t "$session:1" "n ." C-m
+
+  # Add shell window
+  tmux new-window -t "$session" -n "zsh"
+
+  # Add proc 1 window
+  tmux new-window -t "$session" -n "proc 1"
+
+  # Add proc 2 window
+  tmux new-window -t "$session" -n "proc 2"
+
+  # Focus on editor window
+  tmux select-window -t "$session:1"
+  tmux attach -t "$session"
+}
+
