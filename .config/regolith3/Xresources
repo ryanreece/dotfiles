@@ -10,3 +10,6 @@ wm.gaps.inner.size: 1
 
 ! Change regolith sleep binding to Super+Shift+d
 wm.binding.sleep: Shift+d
+
+! Set global DPI in Xresources
+Xft.dpi: 120

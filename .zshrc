@@ -51,3 +51,12 @@ fi
 # Add gems to path
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$PATH:$GEM_HOME/bin"
+
+# Add go to path
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH="$(go env GOPATH)"
+export PATH="$PATH:$GOPATH/bin"
+
+# Set GTK scaling for high res displays (Regolith v3.4)
+export GDK_SCALE=1
+export GDK_DPI_SCALE=1.25
